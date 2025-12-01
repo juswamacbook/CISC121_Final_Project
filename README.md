@@ -59,6 +59,8 @@ Breaking Binary Search into smaller steps:
 
 ## Flowchart Symbol Key
 
+## Flowchart Symbol Key
+
 The following symbols are used in the Binary Search algorithm flowchart:
 
 ```mermaid
@@ -89,41 +91,58 @@ flowchart TD
     
     A --> B --> C --> D --> E --> F
     
-    classDef keyBox fill:#f5f5f5,stroke:#333,stroke-width:1px,rx:5px,ry:5px
+    %% Improved styling with better contrast
+    classDef terminator fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef input fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
+    classDef process fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#ffffff,font-weight:bold
+    classDef decision fill:#FFC107,stroke:#FF9800,stroke-width:2px,color:#000000,font-weight:bold
+    classDef display fill:#8BC34A,stroke:#689F38,stroke-width:2px,color:#000000,font-weight:bold
+    classDef connector fill:#FFFFFF,stroke:#757575,stroke-width:2px,color:#000000
+    classDef keyBox fill:#f8f9fa,stroke:#dee2e6,stroke-width:1px,rx:8,ry:8
+    
+    class A1 terminator
+    class B1 input
+    class C1 process
+    class D1 decision
+    class E1 display
+    class F1 connector
     class A,B,C,D,E,F keyBox
 ```
 
 | Symbol | Name | Purpose | Used in Binary Search For |
 |--------|------|---------|---------------------------|
-| `([Start/End])` | **Terminator** | Beginning and end points of the algorithm | Starting the search and ending when complete |
-| `[/.../]` | **Manual Input/Display** | User input or output display | Receiving sorted array/target; displaying results |
-| `[...]` | **Process/Operation** | Algorithm steps, calculations, or data operations | Initializing pointers, calculating midpoint, updating values |
-| `{...?}` | **Decision/Branching** | Conditional checks and comparisons | Checking loop condition, comparing array values |
-| `((...))` | **Connector** | Connecting different parts of the flowchart | Looping back to repeat the search process |
+| `([Start/End])`<br>![Green Circle](https://via.placeholder.com/15/4CAF50/000000?text=+) | **Terminator** | Beginning and end points | Starting the search and ending when complete |
+| `[/.../]`<br>![Orange Parallelogram](https://via.placeholder.com/15/FF9800/000000?text=+) | **Manual Input/Display** | User input or output display | Receiving sorted array/target; displaying results |
+| `[...]`<br>![Blue Rectangle](https://via.placeholder.com/15/2196F3/000000?text=+) | **Process/Operation** | Algorithm steps and calculations | Initializing pointers, calculating midpoint |
+| `{...?}`<br>![Yellow Diamond](https://via.placeholder.com/15/FFC107/000000?text=+) | **Decision/Branching** | Conditional checks | Checking loop condition, comparing values |
+| `((...))`<br>![White Circle](https://via.placeholder.com/15/FFFFFF/000000?text=+) | **Connector** | Connecting flow segments | Looping back to repeat search |
 
-### Color Coding Legend (If Used):
+### Color & Contrast Guide:
 
-| Color | Meaning | Example |
-|-------|---------|---------|
-| **Green Fill** | Start/End points | Algorithm boundaries |
-| **Yellow/Orange Fill** | Input/Output operations | User interaction points |
-| **Blue Fill** | Process steps | Core algorithm operations |
-| **Orange Diamond** | Decision points | Comparisons and conditions |
-| **White Circle** | Connectors | Flow continuity |
+| Color | Element Type | Text Color | Purpose |
+|-------|--------------|------------|---------|
+| ![#4CAF50](https://via.placeholder.com/15/4CAF50/000000?text=+) **Green** | Terminator | **White** | Start/End points - high visibility |
+| ![#FF9800](https://via.placeholder.com/15/FF9800/000000?text=+) **Orange** | Input/Output | **Black** | User interaction points |
+| ![#2196F3](https://via.placeholder.com/15/2196F3/000000?text=+) **Blue** | Process | **White** | Core algorithm operations |
+| ![#FFC107](https://via.placeholder.com/15/FFC107/000000?text=+) **Yellow** | Decision | **Black** | Comparisons and branching |
+| ![#8BC34A](https://via.placeholder.com/15/8BC34A/000000?text=+) **Light Green** | Display | **Black** | Results and output |
+| ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) **White** | Connector | **Black** | Flow connections |
 
-### Flow Direction:
-- **Arrows (→)** indicate the direction of flow
-- **Text on arrows** shows condition outcomes (Yes/No, True/False)
-- **Dashed lines** typically show error paths or special cases
+### Binary Search Specific Examples:
 
-### Binary Search Specific Symbols:
-1. **`{low ≤ high?}`** - Loop continuation check
-2. **`[/Input Data/]`** - Receiving sorted array and target value
-3. **`[Calculate Midpoint]`** - Core binary search operation
-4. **`{arr[mid] = target?}`** - Comparison decision point
-5. **`[/Display: Found/]`** - Success output
-6. **`[/Display: Not Found/]`** - Failure output
-7. **`((Loop back))`** - Return to check condition
+| Step | Symbol | Description |
+|------|--------|-------------|
+| 1 | `([Start])` | Algorithm begins |
+| 2 | `[/Sorted Array: 1,3,5,7,9/]` | User inputs data |
+| 3 | `[Initialize: low=0, high=4]` | Set up search boundaries |
+| 4 | `{low ≤ high?}` | Check if search should continue |
+| 5 | `[Calculate: mid = (0+4)//2 = 2]` | Find midpoint |
+| 6 | `{arr[2] = target?}` | Compare middle element |
+| 7 | `[/Found at index 2/]` | Display successful result |
+| 8 | `((Loop))` | Return to step 4 |
+| 9 | `([End])` | Algorithm completes |
+
+**Note:** All symbols use high-contrast color combinations (light text on dark backgrounds, dark text on light backgrounds) for maximum readability.
 
 ```mermaid
 flowchart TD

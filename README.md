@@ -174,14 +174,14 @@ flowchart TD
     
     Connector --> Decision1
     
-    %% Fixed styling with proper contrast
-    classDef startEnd fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef manualInput fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
-    classDef preparation fill:#7B1FA2,stroke:#6A1B9A,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef process fill:#1976D2,stroke:#1565C0,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef decision fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
-    classDef display fill:#388E3C,stroke:#2E7D32,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef connector fill:#FFFFFF,stroke:#757575,stroke-width:2px,color:#000000,font-weight:bold
+    %% Alternative styling with good contrast
+    classDef startEnd fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef manualInput fill:#FFB74D,stroke:#FF9800,stroke-width:2px,color:#000000,font-weight:bold
+    classDef preparation fill:#BA68C8,stroke:#9C27B0,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef process fill:#64B5F6,stroke:#2196F3,stroke-width:2px,color:#000000,font-weight:bold
+    classDef decision fill:#FFD54F,stroke:#FFC107,stroke-width:2px,color:#000000,font-weight:bold
+    classDef display fill:#81C784,stroke:#4CAF50,stroke-width:2px,color:#000000,font-weight:bold
+    classDef connector fill:#E0E0E0,stroke:#9E9E9E,stroke-width:2px,color:#000000,font-weight:bold
     
     class Start,End startEnd
     class ManualInput,Display1,Display2,Display3 manualInput

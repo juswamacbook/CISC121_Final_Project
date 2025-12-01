@@ -188,113 +188,128 @@ flowchart TD
     class Connector connector
 ```
 
-### Steps to Run
-Prerequisites
-Python 3.7 or higher
+### Steps to Run:
 
-pip (Python package installer)
+## Prerequisites
+- Python 3.7 or higher
+- pip (Python package installer)
 
-Installation
-Clone the repository:
+## Installation Steps
 
-bash
+# 1. Clone the repository:
+
+```bash
 git clone https://github.com/juswamacbook/CISC121-_Final-Project.git
 cd CISC121-_Final-Project
-Install required dependencies:
+```
 
+# 2. Install required dependencies:
+```
 bash
 pip install -r requirements.txt
-Run the application:
+```
 
+# 3. Run the application:
+
+```
 bash
 python app.py
-Access the app:
+```
+# 4. Access the app:
 
-Open your web browser
+- Open your web browser
 
-Navigate to: http://localhost:7860
+- Navigate to: http://localhost:7860
 
-Or click the link provided in the terminal
+- Or click the link provided in the terminal
 
-Using the Application
-Input Section:
+## Using the Application
 
-Enter a comma-separated list of numbers (e.g., 1, 3, 5, 7, 9, 11)
+# Input Section:
 
-Enter a target value to search for
+- Enter a comma-separated list of numbers (e.g., 1, 3, 5, 7, 9, 11)
 
-Click "Search" button
+- Enter a target value to search for
 
-Visualization:
+- Click "Search" button
 
-Watch the step-by-step search process
+# Visualization:
 
-See color-coded elements:
+- Watch the step-by-step search process
 
-Red: Current search boundaries
+- See color-coded elements:
 
-Blue: Current midpoint being compared
+    - Red: Current search boundaries
 
-Green: Found target element
+    - Blue: Current midpoint being compared
 
-Follow the algorithm logic in real-time
+    - Green: Found target element
 
-Output:
+- Follow the algorithm logic in real-time
 
-Result displayed: Position index or "Not Found"
+# Output:
 
-Number of steps taken
+- Result displayed: Position index or "Not Found"
 
-Time complexity explanation
+- Number of steps taken
 
-Testing & Verification
-Test Cases Performed
-Test Case	Input Array	Target	Expected Result	Actual Result	Status
-Normal Case	[1, 3, 5, 7, 9, 11]	7	Index 3	Index 3	✅
-First Element	[2, 4, 6, 8, 10]	2	Index 0	Index 0	✅
-Last Element	[1, 2, 3, 4, 5]	5	Index 4	Index 4	✅
-Not Found	[10, 20, 30, 40]	25	-1	-1	✅
-Empty Array	[]	5	-1	-1	✅
-Single Element	[42]	42	Index 0	Index 0	✅
-Large Array	1-1000	777	Index 776	Index 776	✅
-Edge Cases Handled
-✅ Empty input arrays
+- Time complexity explanation
 
-✅ Single-element arrays
+## Testing & Verification
 
-✅ Target not in array
+# Test Cases Performed
+# Test Cases Performed
 
-✅ Non-numeric inputs (error handling)
+| Test Case      | Input Array            | Target | Expected Result | Status |
+|----------------|------------------------|--------|-----------------|--------|
+| Normal Case    | [1, 3, 5, 7, 9, 11]    | 7      | Index 3         | ✓      |
+| First Element  | [2, 4, 6, 8, 10]       | 2      | Index 0         | ✓      |
+| Last Element   | [1, 2, 3, 4, 5]        | 5      | Index 4         | ✓      |
+| Not Found      | [10, 20, 30, 40]       | 25     | -1              | ✓      |
+| Empty Array    | []                     | 5      | -1              | ✓      |
+| Single Element | [42]                   | 42     | Index 0         | ✓      |
+| Large Array    | 1-1000                 | 777    | Index 776       | ✓      |
 
-✅ Unsorted arrays (with sorting reminder)
+# Edge Cases Handled
+- ✅ Empty input arrays
 
-Verification Methods
-Manual Testing: Multiple test runs with varied inputs
+- ✅ Single-element arrays
 
-Unit Tests: Basic test functions included in code
+- ✅ Target not in array
 
-Visual Verification: Step-by-step visualization confirms logic
+- ✅ Non-numeric inputs (error handling)
 
-Complexity Analysis: Confirms O(log n) behavior
+- ✅ Unsorted arrays (with sorting reminder)
+
+# Verification Methods
+1. Manual Testing: Multiple test runs with varied inputs
+
+2. Unit Tests: Basic test functions included in code
+
+3. Visual Verification: Step-by-step visualization confirms logic
+
+4. Complexity Analysis: Confirms O(log n) behavior
 
 ### Hugging Face Link
-Live Application: [Your Hugging Face Space Link Here]
+- Live Application: [Your Hugging Face Space Link Here]
 (Once deployed, replace with your actual Hugging Face URL)
 
-To deploy on Hugging Face:
+## To deploy on Hugging Face:
 
-Create a Hugging Face account
+- Create a Hugging Face account
 
-Create a new Space
+- Create a new Space
 
-Choose "Gradio" as SDK
+- Choose "Gradio" as SDK
 
-Upload your files: app.py, requirements.txt
+- Upload your files: app.py, requirements.txt
 
 Your app will be available at: https://huggingface.co/spaces/[your-username]/[app-name]
 
-Features & Implementation Details
-Algorithm Implementation
+## Features & Implementation Details
+
+# Algorithm Implementation
+```
 python
 def binary_search(arr, target):
     """
@@ -322,51 +337,48 @@ def binary_search(arr, target):
             high = mid - 1  # Search left half
     
     return -1, steps  # Not found
-Gradio Interface Features
-Input Validation: Ensures sorted array requirement
+```
+## Gradio Interface Features
+- Input Validation: Ensures sorted array requirement
 
-Step-by-Step Visualization: Animated progression
+- Step-by-Step Visualization: Animated progression
 
-Color Coding: Visual distinction of algorithm states
+- Color Coding: Visual distinction of algorithm states
 
-Educational Labels: Clear explanations of each step
+- Educational Labels: Clear explanations of each step
 
-Responsive Design: Works on different screen sizes
+- Responsive Design: Works on different screen sizes
 
-Key Python Libraries Used
-Gradio: For creating the web interface
+## Key Python Libraries Used
+- Gradio: For creating the web interface
 
-Matplotlib/Plotly: For visualization (if used)
+- Matplotlib/Plotly: For visualization (if used)
 
-Time: For step delays in visualization
+- Time: For step delays in visualization
 
 ### Author & Acknowledgment
-Author: [Your Name]
-Student ID: [Your Student ID]
+Author: Joshua M. Ranin
+Student ID: [204567769]
 Course: CISC-121
 Institution: Queen's University
 
-Acknowledgments
-Course instructor and TAs for project guidance
+## Acknowledgments
+- Course instructor and TAs for project guidance
 
-Gradio team for the excellent UI library
+- Gradio team for the excellent UI library
 
-Hugging Face for free app deployment
+- Hugging Face for free app deployment
 
-Visualgo for algorithm visualization inspiration
+- Visualgo for algorithm visualization inspiration
 
-References
-Binary Search Algorithm - GeeksforGeeks
+## References
+1. Binary Search Algorithm - GeeksforGeeks
 
-Gradio Documentation: https://www.gradio.app/docs/
+2. Gradio Documentation: https://www.gradio.app/docs/
 
-Hugging Face Spaces Guide
+3. Hugging Face Spaces Guide
 
-CISC-121 Course Materials
-
-*This project demonstrates the implementation and visualization of the Binary Search algorithm using Python and Gradio, created as a final project for CISC-121 at Queen's University.*
-
-text
+4. CISC-121 Course Materials
 
 ## **How to Use This:**
 

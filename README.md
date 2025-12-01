@@ -357,12 +357,17 @@ def binary_search(arr, target):
 - Time: For step delays in visualization
 
 ### Author & Acknowledgment
+
 Author: Joshua M. Ranin
+
 Student ID: [204567769]
+
 Course: CISC-121
+
 Institution: Queen's University
 
 ## Acknowledgments
+
 - Course instructor and TAs for project guidance
 
 - Gradio team for the excellent UI library
@@ -372,6 +377,7 @@ Institution: Queen's University
 - Visualgo for algorithm visualization inspiration
 
 ## References
+
 1. Binary Search Algorithm - GeeksforGeeks
 
 2. Gradio Documentation: https://www.gradio.app/docs/
@@ -383,20 +389,35 @@ Institution: Queen's University
 ## **How to Use This:**
 
 1. **Save as `README.md`** in your GitHub repository root
+
 2. **Fill in the placeholder sections:**
+
    - Your name and student ID in "Author" section
+     
    - Add actual demo media (GIFs/screenshots)
+     
    - Add your Hugging Face link once deployed
-3. **Add your actual `app.py` code** when ready
-4. **Create `requirements.txt`** with: `gradio`
+     
+4. **Add your actual `app.py` code** when ready
+   
+6. **Create `requirements.txt`** with: `gradio`
 
 ## **Files You'll Need in Repository:**
+
 CISC121-_Final-Project/
+
 ├── README.md (this file)
+
 ├── app.py (your main application)
+
 ├── requirements.txt (dependencies)
+
 ├── demo/ (optional: for demo media)
+
 │ └── binary-search-demo.gif
+
 └── screenshots/ (optional: for screenshots)
+
 ├── screenshot1.png
+
 └── screenshot2.png

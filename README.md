@@ -70,42 +70,42 @@ Breaking Binary Search into smaller steps:
 
 ```mermaid
 flowchart TD
-    Start([Start]) --> ManualInput[/Manual Input<br>Sorted Array & Target Value/]
+    Start(["Start"]) --> ManualInput[/"Manual Input: Sorted Array & Target Value"/]
     
-    ManualInput --> Preparation{Preparation<br>Validate Input}
-    Preparation -->|Valid| Process1[Initialize<br>low = 0, high = n-1]
-    Preparation -->|Invalid| Display1[Display Error<br>Invalid Input]
-    Display1 --> End
+    ManualInput --> Preparation{"Preparation: Validate Input"}
+    Preparation -->|Valid| Process1["Initialize: low = 0, high = n-1"]
+    Preparation -->|Invalid| Display1["Display: Error Message"]
+    Display1 --> End(["End"])
     
-    Process1 --> Decision1{low ≤ high?}
+    Process1 --> Decision1{"low ≤ high?"}
     
-    Decision1 -->|No| Display2[/Display<br>Target Not Found/]
-    Display2 --> ProcessReturn2[Return -1]
-    ProcessReturn2 --> End([End])
+    Decision1 -->|No| Display2[/"Display: Target Not Found"/]
+    Display2 --> ProcessReturn2["Return: -1"]
+    ProcessReturn2 --> End
     
-    Decision1 -->|Yes| Process2[Calculate<br>mid = low + high // 2]
-    Process2 --> Decision2{Compare arr[mid] with x}
+    Decision1 -->|Yes| Process2["Calculate: mid = (low + high) // 2"]
+    Process2 --> Decision2{"Compare arr[mid] with x"}
     
-    Decision2 -->|Equal| Display3[/Display<br>Found at index mid/]
-    Display3 --> ProcessReturn1[Return mid]
+    Decision2 -->|Equal| Display3[/"Display: Found at index mid"/]
+    Display3 --> ProcessReturn1["Return: mid"]
     ProcessReturn1 --> End
     
-    Decision2 -->|Less Than| Process3[Update low<br>low = mid + 1]
-    Process3 --> Connector[ ]
+    Decision2 -->|Less Than| Process3["Update: low = mid + 1<br>Search Right Half"]
+    Process3 --> Connector(( ))
     
-    Decision2 -->|Greater Than| Process4[Update high<br>high = mid - 1]
+    Decision2 -->|Greater Than| Process4["Update: high = mid - 1<br>Search Left Half"]
     Process4 --> Connector
     
     Connector --> Decision1
     
-    %% Styling to match symbols
-    classDef startEnd shape:circle,fill:#e1f5e1,stroke:#2e7d32,stroke-width:3px
-    classDef manualInput shape:parallelogram,fill:#fff3e0,stroke:#f57c00
-    classDef preparation shape:hexagon,fill:#f3e5f5,stroke:#7b1fa2
-    classDef process shape:rect,fill:#e3f2fd,stroke:#1976d2
-    classDef decision shape:diamond,fill:#fff3e0,stroke:#ff9800
-    classDef display shape:parallelogram,fill:#e8f5e8,stroke:#388e3c
-    classDef connector shape:circle,fill:#fff,stroke:#666,stroke-width:1px,r:15
+    %% Simplified styling that Mermaid actually supports
+    classDef startEnd fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
+    classDef manualInput fill:#fff3e0,stroke:#f57c00
+    classDef preparation fill:#f3e5f5,stroke:#7b1fa2
+    classDef process fill:#e3f2fd,stroke:#1976d2
+    classDef decision fill:#fff3e0,stroke:#ff9800
+    classDef display fill:#e8f5e8,stroke:#388e3c
+    classDef connector fill:#ffffff,stroke:#666666,stroke-width:1px
     
     class Start,End startEnd
     class ManualInput,Display1,Display2,Display3 manualInput
@@ -114,6 +114,3 @@ flowchart TD
     class Decision1,Decision2 decision
     class Connector connector
 ```
-
-
-

@@ -405,19 +405,11 @@ Institution: Queen's University
 ## **Files You'll Need in Repository:**
 
 CISC121-_Final-Project/
-
 ├── README.md (this file)
-
 ├── app.py (your main application)
-
 ├── requirements.txt (dependencies)
-
 ├── demo/ (optional: for demo media)
-
 │ └── binary-search-demo.gif
-
 └── screenshots/ (optional: for screenshots)
-
 ├── screenshot1.png
-
 └── screenshot2.png

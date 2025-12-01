@@ -57,16 +57,73 @@ Breaking Binary Search into smaller steps:
 
 ### Flowchart Symbol Key
 
-| Symbol | Name | Used For |
-|--------|------|----------|
-| `[START]/[END]` | Terminator | Beginning and end of the algorithm |
-| `┃ ?? ┃` | Manual Input | User provides sorted array and target |
-| `██████` | Process | Algorithm steps and calculations |
-| `◇◇◇◇◇◇` | Decision | Branching points and comparisons |
-| `▓▓▓▓▓▓` | Display | Showing results/output to user |
-| `▒▒▒▒▒▒` | Manual Operation | Special operations or validations |
-| `[||]` | Data Storage | Storing variables (low, high, mid) |
-| `○──○` | Connector | Looping back to repeat process |
+## Flowchart Symbol Key
+
+The following symbols are used in the Binary Search algorithm flowchart:
+
+```mermaid
+flowchart TD
+    subgraph A["Terminator (Start/End)"]
+        A1([Start/End])
+    end
+    
+    subgraph B["Manual Input"]
+        B1[/User Input/]
+    end
+    
+    subgraph C["Process/Operation"]
+        C1[Process Step]
+    end
+    
+    subgraph D["Decision/Branching"]
+        D1{Condition?}
+    end
+    
+    subgraph E["Display/Output"]
+        E1[/Output Display/]
+    end
+    
+    subgraph F["Connector/Loop"]
+        F1((Connector))
+    end
+    
+    A --> B --> C --> D --> E --> F
+    
+    classDef keyBox fill:#f5f5f5,stroke:#333,stroke-width:1px,rx:5px,ry:5px
+    class A,B,C,D,E,F keyBox
+```
+
+| Symbol | Name | Purpose | Used in Binary Search For |
+|--------|------|---------|---------------------------|
+| `([Start/End])` | **Terminator** | Beginning and end points of the algorithm | Starting the search and ending when complete |
+| `[/.../]` | **Manual Input/Display** | User input or output display | Receiving sorted array/target; displaying results |
+| `[...]` | **Process/Operation** | Algorithm steps, calculations, or data operations | Initializing pointers, calculating midpoint, updating values |
+| `{...?}` | **Decision/Branching** | Conditional checks and comparisons | Checking loop condition, comparing array values |
+| `((...))` | **Connector** | Connecting different parts of the flowchart | Looping back to repeat the search process |
+
+### Color Coding Legend (If Used):
+
+| Color | Meaning | Example |
+|-------|---------|---------|
+| **Green Fill** | Start/End points | Algorithm boundaries |
+| **Yellow/Orange Fill** | Input/Output operations | User interaction points |
+| **Blue Fill** | Process steps | Core algorithm operations |
+| **Orange Diamond** | Decision points | Comparisons and conditions |
+| **White Circle** | Connectors | Flow continuity |
+
+### Flow Direction:
+- **Arrows (→)** indicate the direction of flow
+- **Text on arrows** shows condition outcomes (Yes/No, True/False)
+- **Dashed lines** typically show error paths or special cases
+
+### Binary Search Specific Symbols:
+1. **`{low ≤ high?}`** - Loop continuation check
+2. **`[/Input Data/]`** - Receiving sorted array and target value
+3. **`[Calculate Midpoint]`** - Core binary search operation
+4. **`{arr[mid] = target?}`** - Comparison decision point
+5. **`[/Display: Found/]`** - Success output
+6. **`[/Display: Not Found/]`** - Failure output
+7. **`((Loop back))`** - Return to check condition
 
 ```mermaid
 flowchart TD

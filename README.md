@@ -56,11 +56,6 @@ Breaking Binary Search into smaller steps:
 **Input → Processing → Output Flow:**
 
 ### Flowchart Symbol Key
-
-## Flowchart Symbol Key
-
-## Flowchart Symbol Key
-
 The following symbols are used in the Binary Search algorithm flowchart:
 
 ```mermaid
@@ -143,6 +138,8 @@ flowchart TD
 | 9 | `([End])` | Algorithm completes |
 
 **Note:** All symbols use high-contrast color combinations (light text on dark backgrounds, dark text on light backgrounds) for maximum readability.
+
+### Flow Chart:
 
 ```mermaid
 flowchart TD

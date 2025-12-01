@@ -402,14 +402,16 @@ Institution: Queen's University
    
 6. **Create `requirements.txt`** with: `gradio`
 
-## **Files You'll Need in Repository:**
+## Project Structure
 
 CISC121-_Final-Project/
-├── README.md (this file)
-├── app.py (your main application)
-├── requirements.txt (dependencies)
-├── demo/ (optional: for demo media)
+├── README.md # This documentation file
+├── app.py # Main application file
+├── requirements.txt # Python dependencies
+├── demo/ # Optional: Demo media files
 │ └── binary-search-demo.gif
-└── screenshots/ (optional: for screenshots)
+└── screenshots/ # Optional: Screenshot images
 ├── screenshot1.png
 └── screenshot2.png
+
+

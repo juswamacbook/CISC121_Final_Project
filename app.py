@@ -203,7 +203,7 @@ def create_visualization(arr: List[int], current_step: Dict, step_number: int, t
     
     # Add title and labels
     ax.set_title(f'Binary Search Visualization - Step {step_number}/{total_steps}', 
-                 fontsize=16, fontweight='bold', pad=20, color=COLORS['text'])
+                fontsize=16, fontweight='bold', pad=20, color=COLORS['text'])
     ax.set_xlabel('Array Index', fontsize=14, color=COLORS['text'])
     ax.set_ylabel('Value', fontsize=14, color=COLORS['text'])
     

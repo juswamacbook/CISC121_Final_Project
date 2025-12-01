@@ -128,9 +128,6 @@ The application provides comprehensive visual and textual feedback through the f
 - Efficiency gain calculation
 - Big O notation explanation with examples
 
-
-→ Processing → Output Flow:**
-
 ### Flowchart Symbol Key
 The following symbols are used in the Binary Search algorithm flowchart:
 

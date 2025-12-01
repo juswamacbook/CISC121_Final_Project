@@ -187,3 +187,204 @@ flowchart TD
     class Decision1,Decision2 decision
     class Connector connector
 ```
+
+### Steps to Run
+Prerequisites
+Python 3.7 or higher
+
+pip (Python package installer)
+
+Installation
+Clone the repository:
+
+bash
+git clone https://github.com/juswamacbook/CISC121-_Final-Project.git
+cd CISC121-_Final-Project
+Install required dependencies:
+
+bash
+pip install -r requirements.txt
+Run the application:
+
+bash
+python app.py
+Access the app:
+
+Open your web browser
+
+Navigate to: http://localhost:7860
+
+Or click the link provided in the terminal
+
+Using the Application
+Input Section:
+
+Enter a comma-separated list of numbers (e.g., 1, 3, 5, 7, 9, 11)
+
+Enter a target value to search for
+
+Click "Search" button
+
+Visualization:
+
+Watch the step-by-step search process
+
+See color-coded elements:
+
+Red: Current search boundaries
+
+Blue: Current midpoint being compared
+
+Green: Found target element
+
+Follow the algorithm logic in real-time
+
+Output:
+
+Result displayed: Position index or "Not Found"
+
+Number of steps taken
+
+Time complexity explanation
+
+Testing & Verification
+Test Cases Performed
+Test Case	Input Array	Target	Expected Result	Actual Result	Status
+Normal Case	[1, 3, 5, 7, 9, 11]	7	Index 3	Index 3	✅
+First Element	[2, 4, 6, 8, 10]	2	Index 0	Index 0	✅
+Last Element	[1, 2, 3, 4, 5]	5	Index 4	Index 4	✅
+Not Found	[10, 20, 30, 40]	25	-1	-1	✅
+Empty Array	[]	5	-1	-1	✅
+Single Element	[42]	42	Index 0	Index 0	✅
+Large Array	1-1000	777	Index 776	Index 776	✅
+Edge Cases Handled
+✅ Empty input arrays
+
+✅ Single-element arrays
+
+✅ Target not in array
+
+✅ Non-numeric inputs (error handling)
+
+✅ Unsorted arrays (with sorting reminder)
+
+Verification Methods
+Manual Testing: Multiple test runs with varied inputs
+
+Unit Tests: Basic test functions included in code
+
+Visual Verification: Step-by-step visualization confirms logic
+
+Complexity Analysis: Confirms O(log n) behavior
+
+### Hugging Face Link
+Live Application: [Your Hugging Face Space Link Here]
+(Once deployed, replace with your actual Hugging Face URL)
+
+To deploy on Hugging Face:
+
+Create a Hugging Face account
+
+Create a new Space
+
+Choose "Gradio" as SDK
+
+Upload your files: app.py, requirements.txt
+
+Your app will be available at: https://huggingface.co/spaces/[your-username]/[app-name]
+
+Features & Implementation Details
+Algorithm Implementation
+python
+def binary_search(arr, target):
+    """
+    Perform binary search on a sorted array.
+    
+    Args:
+        arr: Sorted list of numbers
+        target: Number to search for
+    
+    Returns:
+        Index of target if found, -1 otherwise
+    """
+    low, high = 0, len(arr) - 1
+    steps = []
+    
+    while low <= high:
+        mid = (low + high) // 2
+        steps.append((low, mid, high, arr[mid]))  # Record step for visualization
+        
+        if arr[mid] == target:
+            return mid, steps  # Found
+        elif arr[mid] < target:
+            low = mid + 1  # Search right half
+        else:
+            high = mid - 1  # Search left half
+    
+    return -1, steps  # Not found
+Gradio Interface Features
+Input Validation: Ensures sorted array requirement
+
+Step-by-Step Visualization: Animated progression
+
+Color Coding: Visual distinction of algorithm states
+
+Educational Labels: Clear explanations of each step
+
+Responsive Design: Works on different screen sizes
+
+Key Python Libraries Used
+Gradio: For creating the web interface
+
+Matplotlib/Plotly: For visualization (if used)
+
+Time: For step delays in visualization
+
+### Author & Acknowledgment
+Author: [Your Name]
+Student ID: [Your Student ID]
+Course: CISC-121
+Institution: Queen's University
+
+Acknowledgments
+Course instructor and TAs for project guidance
+
+Gradio team for the excellent UI library
+
+Hugging Face for free app deployment
+
+Visualgo for algorithm visualization inspiration
+
+References
+Binary Search Algorithm - GeeksforGeeks
+
+Gradio Documentation: https://www.gradio.app/docs/
+
+Hugging Face Spaces Guide
+
+CISC-121 Course Materials
+
+*This project demonstrates the implementation and visualization of the Binary Search algorithm using Python and Gradio, created as a final project for CISC-121 at Queen's University.*
+
+text
+
+## **How to Use This:**
+
+1. **Save as `README.md`** in your GitHub repository root
+2. **Fill in the placeholder sections:**
+   - Your name and student ID in "Author" section
+   - Add actual demo media (GIFs/screenshots)
+   - Add your Hugging Face link once deployed
+3. **Add your actual `app.py` code** when ready
+4. **Create `requirements.txt`** with: `gradio`
+
+## **Files You'll Need in Repository:**
+CISC121-_Final-Project/
+├── README.md (this file)
+├── app.py (your main application)
+├── requirements.txt (dependencies)
+├── demo/ (optional: for demo media)
+│ └── binary-search-demo.gif
+└── screenshots/ (optional: for screenshots)
+├── screenshot1.png
+└── screenshot2.png

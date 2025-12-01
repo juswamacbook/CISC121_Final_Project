@@ -174,14 +174,14 @@ flowchart TD
     
     Connector --> Decision1
     
-    %% Simplified styling that Mermaid actually supports
-    classDef startEnd fill:#e1f5e1,stroke:#2e7d32,stroke-width:2px
-    classDef manualInput fill:#fff3e0,stroke:#f57c00
-    classDef preparation fill:#f3e5f5,stroke:#7b1fa2
-    classDef process fill:#e3f2fd,stroke:#1976d2
-    classDef decision fill:#fff3e0,stroke:#ff9800
-    classDef display fill:#e8f5e8,stroke:#388e3c
-    classDef connector fill:#ffffff,stroke:#666666,stroke-width:1px
+    %% Fixed styling with proper contrast
+    classDef startEnd fill:#2E7D32,stroke:#1B5E20,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef manualInput fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
+    classDef preparation fill:#7B1FA2,stroke:#6A1B9A,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef process fill:#1976D2,stroke:#1565C0,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef decision fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
+    classDef display fill:#388E3C,stroke:#2E7D32,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    classDef connector fill:#FFFFFF,stroke:#757575,stroke-width:2px,color:#000000,font-weight:bold
     
     class Start,End startEnd
     class ManualInput,Display1,Display2,Display3 manualInput

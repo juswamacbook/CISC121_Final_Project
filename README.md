@@ -55,6 +55,19 @@ Breaking Binary Search into smaller steps:
 #### 4. **Algorithm Design**
 **Input → Processing → Output Flow:**
 
+### Flowchart Symbol Key
+
+| Symbol | Name | Used For |
+|--------|------|----------|
+| `[START]/[END]` | Terminator | Beginning and end of the algorithm |
+| `┃ ?? ┃` | Manual Input | User provides sorted array and target |
+| `██████` | Process | Algorithm steps and calculations |
+| `◇◇◇◇◇◇` | Decision | Branching points and comparisons |
+| `▓▓▓▓▓▓` | Display | Showing results/output to user |
+| `▒▒▒▒▒▒` | Manual Operation | Special operations or validations |
+| `[||]` | Data Storage | Storing variables (low, high, mid) |
+| `○──○` | Connector | Looping back to repeat process |
+
 ```mermaid
 flowchart TD
     Start([Start]) --> ManualInput[/Manual Input<br>Sorted Array & Target Value/]
@@ -101,5 +114,6 @@ flowchart TD
     class Decision1,Decision2 decision
     class Connector connector
 ```
+
 
 

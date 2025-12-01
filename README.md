@@ -53,7 +53,83 @@ Breaking Binary Search into smaller steps:
 - Memory allocation details
 
 #### 4. **Algorithm Design**
-**Input → Processing → Output Flow:**
+**Input:**
+#### **Input Constraints & Validation:**
+- **Array Size:** Minimum 1 element, maximum 20 elements (for clear visualization)
+- **Sorting Requirement:** Array must be sorted in ascending order
+- **Data Type:** Only integers are accepted
+- **Duplicate Values:** Allowed but must maintain sorted order
+- **Empty Input:** Handled with error message
+
+**Output Components:**
+The application provides comprehensive visual and textual feedback through the following output components:
+
+**1. Visual Array Representation**
+- Color-coded array elements displayed as boxes or bars
+- **Red (#FF6B6B):** Current search boundaries (low and high indices)
+- **Blue (#4D96FF):** Current midpoint being compared (mid index)
+- **Green (#6BCF7F):** Found target element
+- **Gray (#E0E0E0):** Elements outside current search range
+- Real-time pointer indicators showing low, mid, and high positions
+
+**2. Primary Result Display**
+- **Success Case:** "✓ Found at index [X]" (green text)
+- **Failure Case:** "✗ Target not found in array" (red text)
+- Prominently displayed at top of output section
+
+**3. Algorithm Metrics Panel**
+- **Comparisons Made:** Number of steps/iterations performed
+- **Time Complexity:** O(log n) notation with explanation
+- **Search Space Reduction:** Percentage or count of elements eliminated per step
+- **Maximum Possible Comparisons:** ⌊log₂(n)⌋ + 1 formula
+
+**4. Step-by-Step Execution Log**
+- Sequential listing of each algorithm step
+- Shows: Current low, mid, high indices and values
+- Comparison result (less than, greater than, equal to)
+- Pointer updates and search space changes
+- Educational commentary for each decision
+
+**5. Current State Indicators**
+- Pointer values: low, mid, high with their corresponding array values
+- Remaining search space size
+- Next predicted action
+- Progress percentage through algorithm
+
+**6. Educational Information Section**
+- Binary search algorithm explanation
+- Time complexity visualization
+- Comparison with linear search efficiency
+- Real-world applications and use cases
+- Common pitfalls and best practices
+
+**7. Control and Status Panel**
+- Current step number (e.g., "Step 3 of 5")
+- Animation status (playing/paused/complete)
+- Navigation controls (restart, step forward/backward)
+- Search completion indicator
+
+**8. Error and Edge Case Messages**
+- Unsorted array detection and guidance
+- Empty array handling
+- Non-integer input validation
+- Array size limit notifications
+- Target value boundary cases
+
+**9. Progress Visualization**
+- Progress bar showing completion percentage
+- Visual representation of search space reduction
+- Step counter with total expected steps
+- Timeline of comparisons made
+
+**10. Time Complexity Comparison**
+- Visual comparison: Binary Search vs Linear Search
+- Operation count for current array size
+- Efficiency gain calculation
+- Big O notation explanation with examples
+
+
+→ Processing → Output Flow:**
 
 ### Flowchart Symbol Key
 The following symbols are used in the Binary Search algorithm flowchart:

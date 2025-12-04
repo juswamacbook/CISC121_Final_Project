@@ -2,16 +2,16 @@
 
 ## Demo Video/GIF/Screenshot
 
-*(Replace this section with your actual visual materials)*
-
 **Demo GIF:**
-<!-- ![Binary Search Demo](demo/binary-search-demo.gif) -->
+![Binary Search Demo](demo/binary-search-demo.gif)
 
 **Screenshots:**
-<!-- ![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png) -->
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
-**Video Demo:** [Link to video recording if available]
+**Video Demo:** [Link to video recording]
+
+---
 
 ## Problem Breakdown & Computational Thinking
 
@@ -20,7 +20,7 @@ Binary Search is an efficient searching algorithm that finds the position of a t
 
 ### Computational Thinking Approach
 
-#### 1. **Decomposition**
+#### 1. Decomposition
 Breaking Binary Search into smaller steps:
 - **Step 1:** Receive sorted array and target value as input
 - **Step 2:** Initialize pointers: `low = 0`, `high = len(array) - 1`
@@ -32,305 +32,148 @@ Breaking Binary Search into smaller steps:
     - If greater: update `high = mid - 1` (search left half)
 - **Step 4:** Return `-1` if not found
 
-#### 2. **Pattern Recognition**
+#### 2. Pattern Recognition
 - Repeated halving of search space (divide-and-conquer)
 - Systematic comparison at midpoint
 - Progressive narrowing of search boundaries
 - Logarithmic time complexity: O(log n)
 
-#### 3. **Abstraction**
-**Shown to user:**
+#### 3. Abstraction
+**What the user sees:**
 - Current search boundaries (low, high pointers)
 - Midpoint calculation and comparison
 - Visual highlighting of compared elements
 - Step-by-step progression through algorithm
 - Final result (position or "not found")
 
-**Hidden from user:**
+**What is hidden:**
 - Underlying array indexing details
 - Mathematical floor division
 - Loop control variables
 - Memory allocation details
 
-#### 4. **Algorithm Design**
+#### 4. Algorithm Design
+
 **Input:**
-#### **Input Constraints & Validation:**
-- **Array Size:** Minimum 1 element, maximum 20 elements (for clear visualization)
-- **Sorting Requirement:** Array must be sorted in ascending order
-- **Data Type:** Only integers are accepted
-- **Duplicate Values:** Allowed but must maintain sorted order
-- **Empty Input:** Handled with error message
+- Sorted array of integers (1-20 elements)
+- Target value to search for
+- Input validation for correct data types
 
-**Output Components:**
+**Output:**
+- Visual representation with color-coded elements:
+  - Red: Current search boundaries (low and high)
+  - Blue: Current midpoint being examined
+  - Green: Found target element
+  - Gray: Elements outside search range
+- Search result message (found at index X or not found)
+- Step-by-step execution trace
+- Algorithm metrics (comparisons made, efficiency)
 
-**Visual Array Representation**
-- Color-coded array elements displayed as boxes or bars
-- **Red (#FF6B6B):** Current search boundaries (low and high indices)
-- **Blue (#4D96FF):** Current midpoint being compared (mid index)
-- **Green (#6BCF7F):** Found target element
-- **Gray (#E0E0E0):** Elements outside current search range
-- Real-time pointer indicators showing low, mid, and high positions
+---
 
-**Primary Result Display**
-- **Success Case:** "✓ Found at index [X]" (green text)
-- **Failure Case:** "✗ Target not found in array" (red text)
-- Prominently displayed at top of output section
-
-**Algorithm Metrics Panel**
-- **Comparisons Made:** Number of steps/iterations performed
-- **Time Complexity:** O(log n) notation with explanation
-- **Search Space Reduction:** Percentage or count of elements eliminated per step
-- **Maximum Possible Comparisons:** ⌊log₂(n)⌋ + 1 formula
-
-**Step-by-Step Execution Log**
-- Sequential listing of each algorithm step
-- Shows: Current low, mid, high indices and values
-- Comparison result (less than, greater than, equal to)
-- Pointer updates and search space changes
-- Educational commentary for each decision
-
-**Current State Indicators**
-- Pointer values: low, mid, high with their corresponding array values
-- Remaining search space size
-- Next predicted action
-- Progress percentage through algorithm
-
-**Educational Information Section**
-- Binary search algorithm explanation
-- Time complexity visualization
-- Comparison with linear search efficiency
-- Real-world applications and use cases
-- Common pitfalls and best practices
-
-**Control and Status Panel**
-- Current step number (e.g., "Step 3 of 5")
-- Animation status (playing/paused/complete)
-- Navigation controls (restart, step forward/backward)
-- Search completion indicator
-
-**Error and Edge Case Messages**
-- Unsorted array detection and guidance
-- Empty array handling
-- Non-integer input validation
-- Array size limit notifications
-- Target value boundary cases
-
-**Progress Visualization**
-- Progress bar showing completion percentage
-- Visual representation of search space reduction
-- Step counter with total expected steps
-- Timeline of comparisons made
-
-**Time Complexity Comparison**
-- Visual comparison: Binary Search vs Linear Search
-- Operation count for current array size
-- Efficiency gain calculation
-- Big O notation explanation with examples
-
-### Flowchart Symbol Key
-The following symbols are used in the Binary Search algorithm flowchart:
+### Flowchart
 
 ```mermaid
 flowchart TD
-    subgraph A["Terminator (Start/End)"]
-        A1([Start/End])
-    end
+    Start([Start]) --> Input[/Input: Sorted Array & Target/]
     
-    subgraph B["Manual Input"]
-        B1[/User Input/]
-    end
+    Input --> Validate{Valid Input?}
+    Validate -->|No| Error[/Display Error/]
+    Error --> End([End])
     
-    subgraph C["Process/Operation"]
-        C1[Process Step]
-    end
+    Validate -->|Yes| Init[Initialize: low=0, high=n-1]
+    Init --> Loop{low <= high?}
     
-    subgraph D["Decision/Branching"]
-        D1{Condition?}
-    end
+    Loop -->|No| NotFound[/Display: Not Found/]
+    NotFound --> End
     
-    subgraph E["Display/Output"]
-        E1[/Output Display/]
-    end
+    Loop -->|Yes| CalcMid[Calculate: mid = low + high // 2]
+    CalcMid --> Compare{arr[mid] vs target}
     
-    subgraph F["Connector/Loop"]
-        F1((Connector))
-    end
+    Compare -->|Equal| Found[/Display: Found at mid/]
+    Found --> End
     
-    A --> B --> C --> D --> E --> F
+    Compare -->|Less| UpdateLow[Update: low = mid + 1]
+    UpdateLow --> Loop
     
-    %% Improved styling with better contrast
-    classDef terminator fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#ffffff,font-weight:bold
-    classDef input fill:#FF9800,stroke:#EF6C00,stroke-width:2px,color:#000000,font-weight:bold
-    classDef process fill:#2196F3,stroke:#1976D2,stroke-width:2px,color:#ffffff,font-weight:bold
-    classDef decision fill:#FFC107,stroke:#FF9800,stroke-width:2px,color:#000000,font-weight:bold
-    classDef display fill:#8BC34A,stroke:#689F38,stroke-width:2px,color:#000000,font-weight:bold
-    classDef connector fill:#FFFFFF,stroke:#757575,stroke-width:2px,color:#000000
-    classDef keyBox fill:#f8f9fa,stroke:#dee2e6,stroke-width:1px,rx:8,ry:8
+    Compare -->|Greater| UpdateHigh[Update: high = mid - 1]
+    UpdateHigh --> Loop
     
-    class A1 terminator
-    class B1 input
-    class C1 process
-    class D1 decision
-    class E1 display
-    class F1 connector
-    class A,B,C,D,E,F keyBox
-```
-
-| Symbol | Name | Purpose | Used in Binary Search For |
-|--------|------|---------|---------------------------|
-| `([Start/End])`<br>![Green Circle](https://via.placeholder.com/15/4CAF50/000000?text=+) | **Terminator** | Beginning and end points | Starting the search and ending when complete |
-| `[/.../]`<br>![Orange Parallelogram](https://via.placeholder.com/15/FF9800/000000?text=+) | **Manual Input/Display** | User input or output display | Receiving sorted array/target; displaying results |
-| `[...]`<br>![Blue Rectangle](https://via.placeholder.com/15/2196F3/000000?text=+) | **Process/Operation** | Algorithm steps and calculations | Initializing pointers, calculating midpoint |
-| `{...?}`<br>![Yellow Diamond](https://via.placeholder.com/15/FFC107/000000?text=+) | **Decision/Branching** | Conditional checks | Checking loop condition, comparing values |
-| `((...))`<br>![White Circle](https://via.placeholder.com/15/FFFFFF/000000?text=+) | **Connector** | Connecting flow segments | Looping back to repeat search |
-
-### Color & Contrast Guide:
-
-| Color | Element Type | Text Color | Purpose |
-|-------|--------------|------------|---------|
-| ![#4CAF50](https://via.placeholder.com/15/4CAF50/000000?text=+) **Green** | Terminator | **White** | Start/End points - high visibility |
-| ![#FF9800](https://via.placeholder.com/15/FF9800/000000?text=+) **Orange** | Input/Output | **Black** | User interaction points |
-| ![#2196F3](https://via.placeholder.com/15/2196F3/000000?text=+) **Blue** | Process | **White** | Core algorithm operations |
-| ![#FFC107](https://via.placeholder.com/15/FFC107/000000?text=+) **Yellow** | Decision | **Black** | Comparisons and branching |
-| ![#8BC34A](https://via.placeholder.com/15/8BC34A/000000?text=+) **Light Green** | Display | **Black** | Results and output |
-| ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) **White** | Connector | **Black** | Flow connections |
-
-### Binary Search Specific Examples:
-
-| Step | Symbol | Description |
-|------|--------|-------------|
-| 1 | `([Start])` | Algorithm begins |
-| 2 | `[/Sorted Array: 1,3,5,7,9/]` | User inputs data |
-| 3 | `[Initialize: low=0, high=4]` | Set up search boundaries |
-| 4 | `{low ≤ high?}` | Check if search should continue |
-| 5 | `[Calculate: mid = (0+4)//2 = 2]` | Find midpoint |
-| 6 | `{arr[2] = target?}` | Compare middle element |
-| 7 | `[/Found at index 2/]` | Display successful result |
-| 8 | `((Loop))` | Return to step 4 |
-| 9 | `([End])` | Algorithm completes |
-
-**Note:** All symbols use high-contrast color combinations (light text on dark backgrounds, dark text on light backgrounds) for maximum readability.
-
-### Flow Chart:
-
-```mermaid
-flowchart TD
-    Start(["Start"]) --> ManualInput[/"Manual Input: Sorted Array & Target Value"/]
-    
-    ManualInput --> Preparation{"Preparation: Validate Input"}
-    Preparation -->|Valid| Process1["Initialize: low = 0, high = n-1"]
-    Preparation -->|Invalid| Display1["Display: Error Message"]
-    Display1 --> End(["End"])
-    
-    Process1 --> Decision1{"low ≤ high?"}
-    
-    Decision1 -->|No| Display2[/"Display: Target Not Found"/]
-    Display2 --> ProcessReturn2["Return: -1"]
-    ProcessReturn2 --> End
-    
-    Decision1 -->|Yes| Process2["Calculate: mid = (low + high) // 2"]
-    Process2 --> Decision2{"Compare arr[mid] with x"}
-    
-    Decision2 -->|Equal| Display3[/"Display: Found at index mid"/]
-    Display3 --> ProcessReturn1["Return: mid"]
-    ProcessReturn1 --> End
-    
-    Decision2 -->|Less Than| Process3["Update: low = mid + 1<br>Search Right Half"]
-    Process3 --> Connector(( ))
-    
-    Decision2 -->|Greater Than| Process4["Update: high = mid - 1<br>Search Left Half"]
-    Process4 --> Connector
-    
-    Connector --> Decision1
-    
-    %% Alternative styling with good contrast
-    classDef startEnd fill:#4CAF50,stroke:#388E3C,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef manualInput fill:#FFB74D,stroke:#FF9800,stroke-width:2px,color:#000000,font-weight:bold
-    classDef preparation fill:#BA68C8,stroke:#9C27B0,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef process fill:#64B5F6,stroke:#2196F3,stroke-width:2px,color:#000000,font-weight:bold
-    classDef decision fill:#FFD54F,stroke:#FFC107,stroke-width:2px,color:#000000,font-weight:bold
-    classDef display fill:#81C784,stroke:#4CAF50,stroke-width:2px,color:#000000,font-weight:bold
-    classDef connector fill:#E0E0E0,stroke:#9E9E9E,stroke-width:2px,color:#000000,font-weight:bold
+    classDef startEnd fill:#4CAF50,stroke:#2E7D32,color:#fff
+    classDef process fill:#2196F3,stroke:#1976D2,color:#fff
+    classDef decision fill:#FFC107,stroke:#F57C00,color:#000
+    classDef io fill:#FF9800,stroke:#EF6C00,color:#000
     
     class Start,End startEnd
-    class ManualInput,Display1,Display2,Display3 manualInput
-    class Preparation preparation
-    class Process1,Process2,Process3,Process4,ProcessReturn1,ProcessReturn2 process
-    class Decision1,Decision2 decision
-    class Connector connector
+    class Init,CalcMid,UpdateLow,UpdateHigh process
+    class Validate,Loop,Compare decision
+    class Input,Error,NotFound,Found io
 ```
 
-### Steps to Run:
+---
 
-## Prerequisites
+## Installation & Setup
+
+### Prerequisites
 - Python 3.7 or higher
 - pip (Python package installer)
 
-## Installation Steps
+### Installation Steps
 
-# 1. Clone the repository:
-
+1. **Clone the repository:**
 ```bash
-git clone https://github.com/juswamacbook/CISC121-_Final-Project.git
-cd CISC121-_Final-Project
+git clone https://github.com/juswamacbook/CISC121_Final_Project.git
+cd CISC121_Final_Project
 ```
 
-# 2. Install required dependencies:
+2. **Create a virtual environment (recommended):**
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
-bash
+
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
-# 3. Run the application:
-
-```
-bash
+4. **Run the application:**
+```bash
 python app.py
 ```
-# 4. Access the app:
 
+5. **Access the app:**
 - Open your web browser
-
 - Navigate to: http://localhost:7860
-
 - Or click the link provided in the terminal
+
+---
 
 ## Using the Application
 
-# Input Section:
+### Input
+1. Enter a comma-separated list of sorted numbers (e.g., `1, 3, 5, 7, 9, 11`)
+2. Enter a target value to search for
+3. Click "Run Binary Search" button
 
-- Enter a comma-separated list of numbers (e.g., 1, 3, 5, 7, 9, 11)
-
-- Enter a target value to search for
-
-- Click "Search" button
-
-# Visualization:
-
+### Visualization
 - Watch the step-by-step search process
+- Color-coded elements show algorithm state:
+  - **Red (L/H):** Current search boundaries
+  - **Blue (M):** Current midpoint being compared
+  - **Green (M):** Found target element
 
-- See color-coded elements:
+### Output
+- Search result: Position index or "Not Found"
+- Number of comparisons made
+- Step-by-step execution trace
+- Algorithm efficiency metrics
 
-    - Red: Current search boundaries
-
-    - Blue: Current midpoint being compared
-
-    - Green: Found target element
-
-- Follow the algorithm logic in real-time
-
-# Output:
-
-- Result displayed: Position index or "Not Found"
-
-- Number of steps taken
-
-- Time complexity explanation
+---
 
 ## Testing & Verification
 
-# Test Cases Performed
-# Test Cases Performed
+### Test Cases Performed
 
 | Test Case      | Input Array            | Target | Expected Result | Status |
 |----------------|------------------------|--------|-----------------|--------|
@@ -338,152 +181,122 @@ python app.py
 | First Element  | [2, 4, 6, 8, 10]       | 2      | Index 0         | ✓      |
 | Last Element   | [1, 2, 3, 4, 5]        | 5      | Index 4         | ✓      |
 | Not Found      | [10, 20, 30, 40]       | 25     | -1              | ✓      |
-| Empty Array    | []                     | 5      | -1              | ✓      |
 | Single Element | [42]                   | 42     | Index 0         | ✓      |
-| Large Array    | 1-1000                 | 777    | Index 776       | ✓      |
 
-# Edge Cases Handled
-- ✅ Empty input arrays
+### Edge Cases Handled
+- Empty input arrays
+- Single-element arrays
+- Target not in array
+- Non-numeric inputs (error handling)
+- Unsorted arrays (error message)
+- Array size limits (max 20 elements)
 
-- ✅ Single-element arrays
+### Verification Methods
+1. **Manual Testing:** Multiple test runs with varied inputs
+2. **Visual Verification:** Step-by-step visualization confirms logic
+3. **Complexity Analysis:** Confirms O(log n) behavior
 
-- ✅ Target not in array
+---
 
-- ✅ Non-numeric inputs (error handling)
+## Algorithm Implementation
 
-- ✅ Unsorted arrays (with sorting reminder)
+### Core Binary Search Function
 
-# Verification Methods
-1. Manual Testing: Multiple test runs with varied inputs
-
-2. Unit Tests: Basic test functions included in code
-
-3. Visual Verification: Step-by-step visualization confirms logic
-
-4. Complexity Analysis: Confirms O(log n) behavior
-
-### Hugging Face Link
-- Live Application: [Your Hugging Face Space Link Here]
-(Once deployed, replace with your actual Hugging Face URL)
-
-## To deploy on Hugging Face:
-
-- Create a Hugging Face account
-
-- Create a new Space
-
-- Choose "Gradio" as SDK
-
-- Upload your files: app.py, requirements.txt
-
-Your app will be available at: https://huggingface.co/spaces/[your-username]/[app-name]
-
-## Features & Implementation Details
-
-# Algorithm Implementation
-```
-python
+```python
 def binary_search(arr, target):
     """
-    Perform binary search on a sorted array.
-    
-    Args:
-        arr: Sorted list of numbers
-        target: Number to search for
-    
-    Returns:
-        Index of target if found, -1 otherwise
+    Implements binary search algorithm iteratively.
+    Time Complexity: O(log n)
+    Space Complexity: O(1)
     """
-    low, high = 0, len(arr) - 1
     steps = []
+    low = 0
+    high = len(arr) - 1
     
     while low <= high:
         mid = (low + high) // 2
-        steps.append((low, mid, high, arr[mid]))  # Record step for visualization
+        steps.append({'low': low, 'high': high, 'mid': mid})
         
         if arr[mid] == target:
             return mid, steps  # Found
         elif arr[mid] < target:
-            low = mid + 1  # Search right half
+            low = mid + 1      # Search right half
         else:
-            high = mid - 1  # Search left half
+            high = mid - 1     # Search left half
     
-    return -1, steps  # Not found
+    return -1, steps           # Not found
 ```
-## Gradio Interface Features
-- Input Validation: Ensures sorted array requirement
 
-- Step-by-Step Visualization: Animated progression
+### Key Features
+- **Input Validation:** Ensures sorted array requirement
+- **Step-by-Step Visualization:** Real-time algorithm progression
+- **Color Coding:** Visual distinction of algorithm states
+- **Educational Output:** Clear explanations of each step
+- **Responsive Design:** Works on different screen sizes
 
-- Color Coding: Visual distinction of algorithm states
-
-- Educational Labels: Clear explanations of each step
-
-- Responsive Design: Works on different screen sizes
+---
 
 ## Key Python Libraries Used
-- Gradio: For creating the web interface
 
-- Matplotlib/Plotly: For visualization (if used)
+- **Gradio:** Web interface and user interaction
+- **Matplotlib:** Bar chart visualization
+- **NumPy:** Efficient array operations and calculations
 
-- Time: For step delays in visualization
+---
 
-### Author & Acknowledgment
+## Deployment
 
-Author: Joshua M. Ranin
+### Hugging Face Spaces
+Live Application: [Your Hugging Face Space Link]
 
-Student ID: [204567769]
+### To Deploy:
+1. Create a Hugging Face account at https://huggingface.co
+2. Create a new Space and select "Gradio" as SDK
+3. Upload `app.py` and `requirements.txt`
+4. Your app will be live at: `https://huggingface.co/spaces/[username]/[space-name]`
 
-Course: CISC-121
-
-Institution: Queen's University
-
-## Acknowledgments
-
-- Course instructor and TAs for project guidance
-
-- Gradio team for the excellent UI library
-
-- Hugging Face for free app deployment
-
-- Visualgo for algorithm visualization inspiration
-
-## References
-
-1. Binary Search Algorithm - GeeksforGeeks
-
-2. Gradio Documentation: https://www.gradio.app/docs/
-
-3. Hugging Face Spaces Guide
-
-4. CISC-121 Course Materials
-
-## **How to Use This:**
-
-1. **Save as `README.md`** in your GitHub repository root
-
-2. **Fill in the placeholder sections:**
-
-   - Your name and student ID in "Author" section
-     
-   - Add actual demo media (GIFs/screenshots)
-     
-   - Add your Hugging Face link once deployed
-     
-4. **Add your actual `app.py` code** when ready
-   
-6. **Create `requirements.txt`** with: `gradio`
+---
 
 ## Project Structure
 
-CISC121-_Final-Project/
-├── README.md # This documentation file
-├── app.py # Main application file
-├── requirements.txt # Python dependencies
-├── demo/ # Optional: Demo media files
-│ └── binary-search-demo.gif
-└── screenshots/ # Optional: Screenshot images
-├── screenshot1.png
-└── screenshot2.png
+```
+CISC121_Final_Project/
+├── README.md              # Project documentation
+├── app.py                 # Main application file
+├── requirements.txt       # Python dependencies
+├── demo/                  # Demo media files
+│   └── binary-search-demo.gif
+└── screenshots/           # Screenshot images
+    ├── screenshot1.png
+    └── screenshot2.png
+```
 
+---
 
+## Author & Acknowledgments
+
+**Author:** Joshua M. Ranin  
+**Student ID:** 20457769  
+**Course:** CISC-121  
+**Institution:** Queen's University  
+**Date:** December 2024
+
+### Acknowledgments
+- Course instructor and TAs for project guidance
+- Gradio team for the excellent UI library
+- Hugging Face for free app deployment
+
+---
+
+## References
+
+1. [Binary Search Algorithm - GeeksforGeeks](https://www.geeksforgeeks.org/binary-search/)
+2. [Gradio Documentation](https://www.gradio.app/docs/)
+3. [Hugging Face Spaces Guide](https://huggingface.co/docs/hub/spaces)
+4. CISC-121 Course Materials
+
+---
+
+## License
+
+This project is created for educational purposes as part of CISC-121 coursework at Queen's University.

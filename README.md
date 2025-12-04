@@ -3,11 +3,11 @@
 ## Demo Video//Screenshot
 
 **Screenshots:**
-![Screenshot 1](~/homepage.png)
-![Screenshot 2](~/found.png)
-![Screenshot 3](~/notfound.png)
-![Screenshot 4](~/targetfound.png)
-![Screenshot 5](~/targetnotfound.png)
+![Screenshot 1](images/homepage.png)
+![Screenshot 2](images/found.png)
+![Screenshot 3](images/targetfound.png)
+![Screenshot 4](images/notfound.png)
+![Screenshot 5](images/targetnotfound.png)
 
 **Video Demo:** [(~/demo.mov)]
 

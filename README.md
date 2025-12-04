@@ -21,57 +21,57 @@ Binary Search is an efficient searching algorithm that finds the position of a t
 ### Computational Thinking Approach
 
 #### 1. Decomposition
-The sorting algorithm will be broken down into these smaller steps:
+The search algorithm will be broken down into these smaller steps:
 
-Input Acquisition: Collect the unsorted data from the user via GUI input fields
+- Input Acquisition: Collect the unsorted data from the user via GUI input fields
 
-Data Validation: Verify input format and convert to appropriate data structure
+- Data Validation: Verify input format and convert to appropriate data structure
 
-Visual Initialization: Display initial unsorted array with visual representation
+- Visual Initialization: Display initial unsorted array with visual representation
 
-Sorting Iteration: Perform the core comparison/swapping operations
+- Sorting Iteration: Perform the core comparison/swapping operations
 
-Visual Update: Animate each step to show algorithm progress
+- Visual Update: Animate each step to show algorithm progress
 
-Completion Check: Determine when sorting is complete
+- Completion Check: Determine when sorting is complete
 
-Output Display: Show final sorted result with performance metrics
+- Output Display: Show final sorted result with performance metrics
 
 #### 2. Pattern Recognition
 The algorithm exhibits these repeating patterns:
 
-Comparison Pattern: Repeatedly comparing adjacent elements (in bubble sort) or finding minimum/maximum elements (in selection sort)
+- Comparison Pattern: Repeatedly comparing adjacent elements (in bubble sort) or finding minimum/maximum elements (in selection sort)
 
-Swapping Pattern: Exchanging positions when elements are out of order
+- Swapping Pattern: Exchanging positions when elements are out of order
 
-Iterative Reduction: With each pass, the sorted portion grows and unsorted portion shrinks
+- Iterative Reduction: With each pass, the sorted portion grows and unsorted portion shrinks
 
-Index Traversal: Systematic movement through the data structure from start to end
+- Index Traversal: Systematic movement through the data structure from start to end
 
 #### 3. Abstraction
-Details to Show User:
+**Details to Show User:**
 
-Current state of the array/list after each significant operation
+- Current state of the array/list after each significant operation
 
-Visual highlighting of elements being compared
+- Visual highlighting of elements being compared
 
-Animation of element swaps/movements
+- Animation of element swaps/movements
 
-Step counter and current algorithm phase
+- Step counter and current algorithm phase
 
-Performance metrics (comparisons, swaps, time)
+- Performance metrics (comparisons, swaps, time)
 
-Details to Hide/Abstract:
+**Details to Hide/Abstract:**
 
-Internal pointer/index management
+- Internal pointer/index management
 
-Temporary variable assignments during swaps
+- Temporary variable assignments during swaps
 
-Loop control variables and conditions
+- Loop control variables and conditions
 
-Memory allocation/management details
+- Memory allocation/management details
 
-Error handling for edge cases (handled silently)
+- Error handling for edge cases (handled silently)
 #### 4. Algorithm Design
 
 **Input:**

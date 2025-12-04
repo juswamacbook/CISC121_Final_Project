@@ -218,6 +218,7 @@ def create_visualization(arr: List[int], current_step: Dict, step_number: int, t
     ax.spines['right'].set_visible(False)
     
     plt.tight_layout()
+    plt.close()
     return fig
 
 def generate_example_array() -> str:
@@ -267,7 +268,7 @@ def run_binary_search(array_input: str, target_input: str) -> Tuple[plt.Figure, 
                 color='red', transform=ax.transAxes, wrap=True)
         ax.axis('off')
         plt.tight_layout()
-        
+        plt.close()
         return fig, f"❌ {error}", "", ""
     
     # Check if array is sorted (warning case)
@@ -430,26 +431,26 @@ def create_interface():
                 with gr.Group(elem_classes="input-section"):
                     gr.Markdown("## 🎨 Visualization Legend")
                     
-                    legend_html = f"""
-                    <div style="background: white; padding: 15px; border-radius: 8px;">
-                        <div style="display: flex; align-items: center; margin: 5px 0;">
-                            <div style="width: 20px; height: 20px; background: {COLORS['boundary']}; margin-right: 10px; border: 1px solid black;"></div>
+                    legend_html = """
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 30px; height: 30px; background-color: #FF6B6B; border: 2px solid black;"></div>
                             <span>Search Boundaries (low/high)</span>
                         </div>
-                        <div style="display: flex; align-items: center; margin: 5px 0;">
-                            <div style="width: 20px; height: 20px; background: {COLORS['midpoint']}; margin-right: 10px; border: 1px solid black;"></div>
-                            <span>Current Midpoint</span>
-                        </div>
-                        <div style="display: flex; align-items: center; margin: 5px 0;">
-                            <div style="width: 20px; height: 20px; background: {COLORS['found']}; margin-right: 10px; border: 1px solid black;"></div>
-                            <span>Found Element</span>
-                        </div>
-                        <div style="display: flex; align-items: center; margin: 5px 0;">
-                            <div style="width: 20px; height: 20px; background: {COLORS['default']}; margin-right: 10px; border: 1px solid black;"></div>
-                            <span>Other Elements</span>
-                        </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background-color: #4D96FF; border: 2px solid black;"></div>
+                        <span>Current Midpoint</span>
                     </div>
-                    """
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background-color: #6BCF7F; border: 2px solid black;"></div>
+                        <span>Found Element</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 30px; height: 30px; background-color: #E0E0E0; border: 2px solid black;"></div>
+                        <span>Other Elements</span>
+                    </div>
+                </div>
+                """
                     gr.HTML(legend_html)
         
         # Output Section
@@ -528,10 +529,3 @@ if __name__ == "__main__":
     
     # Launch the app
     app = create_interface()
-    app.launch(
-        server_name="0.0.0.0",
-        server_port=7860,
-        share=False,
-        show_error=True,
-        debug=True
-    )

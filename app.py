@@ -1,8 +1,8 @@
 """
 Binary Search Algorithm Visualizer
 CISC-121 Final Project
-Author: [Your Name]
-Student ID: [Your Student ID]
+Author: Joshua M.Ranin
+Student ID: 20457769
 """
 
 import gradio as gr

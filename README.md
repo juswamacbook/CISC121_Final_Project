@@ -1,9 +1,6 @@
 # Binary Search Algorithm Visualizer
 
-## Demo Video/GIF/Screenshot
-
-**Demo GIF:**
-![Binary Search Demo](~/demo.mov)
+## Demo Video//Screenshot
 
 **Screenshots:**
 ![Screenshot 1](~/homepage.png)
@@ -12,7 +9,7 @@
 ![Screenshot 4](~/targetfound.png)
 ![Screenshot 5](~/targetnotfound.png)
 
-**Video Demo:** [Link to video recording]
+**Video Demo:** [(~/demo.mov)]
 
 ---
 

@@ -9,7 +9,7 @@
 ![Screenshot 4](~/targetfound.png)
 ![Screenshot 5](~/targetnotfound.png)
 
-**Video Demo:** [(~/demo.mov)]
+**Video Demo:** [https://drive.google.com/file/d/1SL2UeEwHn6zxOgoWDs6oHmR-gcOq6NgM/view?usp=sharing]
 
 ---
 

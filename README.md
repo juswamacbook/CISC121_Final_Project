@@ -287,7 +287,7 @@ Live Application: [Your Hugging Face Space Link]
 1. Create a Hugging Face account at https://huggingface.co
 2. Create a new Space and select "Gradio" as SDK
 3. Upload `app.py` and `requirements.txt`
-4. Your app will be live at: `https://huggingface.co/spaces/[username]/[space-name]`
+4. Your app will be live at: `https://huggingface.co/spaces/03nineteenjo/`
 
 ---
 
@@ -300,7 +300,7 @@ CISC121_Final_Project/
 ├── requirements.txt       # Python dependencies
 ├── demo/                  # Demo media files
 │   └── binary-search-demo.gif
-└── screenshots/           # Screenshot images
+└── images/           # Screenshot images
     ├── screenshot1.png
     └── screenshot2.png
 ```

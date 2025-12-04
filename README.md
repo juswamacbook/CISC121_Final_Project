@@ -3,14 +3,14 @@
 ## Demo Video/GIF/Screenshot
 
 **Demo GIF:**
-![Binary Search Demo](~/demo/demo.mov)
+![Binary Search Demo](~/demo.mov)
 
 **Screenshots:**
-![Screenshot 1](~/images/homepage.png)
-![Screenshot 2](~/images/found.png)
-![Screenshot 3](~/images/notfound.png)
-![Screenshot 4](~/images/targetfound.png)
-![Screenshot 5](~/images/targetnotfound.png)
+![Screenshot 1](~/homepage.png)
+![Screenshot 2](~/found.png)
+![Screenshot 3](~/notfound.png)
+![Screenshot 4](~/targetfound.png)
+![Screenshot 5](~/targetnotfound.png)
 
 **Video Demo:** [Link to video recording]
 

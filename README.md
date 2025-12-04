@@ -21,53 +21,87 @@ Binary Search is an efficient searching algorithm that finds the position of a t
 ### Computational Thinking Approach
 
 #### 1. Decomposition
-Breaking Binary Search into smaller steps:
-- **Step 1:** Receive sorted array and target value as input
-- **Step 2:** Initialize pointers: `low = 0`, `high = len(array) - 1`
-- **Step 3:** While `low <= high`:
-  - Calculate `mid = (low + high) // 2`
-  - Compare `array[mid]` with target:
-    - If equal: return `mid` (found)
-    - If less: update `low = mid + 1` (search right half)
-    - If greater: update `high = mid - 1` (search left half)
-- **Step 4:** Return `-1` if not found
+The sorting algorithm will be broken down into these smaller steps:
+
+Input Acquisition: Collect the unsorted data from the user via GUI input fields
+
+Data Validation: Verify input format and convert to appropriate data structure
+
+Visual Initialization: Display initial unsorted array with visual representation
+
+Sorting Iteration: Perform the core comparison/swapping operations
+
+Visual Update: Animate each step to show algorithm progress
+
+Completion Check: Determine when sorting is complete
+
+Output Display: Show final sorted result with performance metrics
 
 #### 2. Pattern Recognition
-- Repeated halving of search space (divide-and-conquer)
-- Systematic comparison at midpoint
-- Progressive narrowing of search boundaries
-- Logarithmic time complexity: O(log n)
+The algorithm exhibits these repeating patterns:
+
+Comparison Pattern: Repeatedly comparing adjacent elements (in bubble sort) or finding minimum/maximum elements (in selection sort)
+
+Swapping Pattern: Exchanging positions when elements are out of order
+
+Iterative Reduction: With each pass, the sorted portion grows and unsorted portion shrinks
+
+Index Traversal: Systematic movement through the data structure from start to end
 
 #### 3. Abstraction
-**What the user sees:**
-- Current search boundaries (low, high pointers)
-- Midpoint calculation and comparison
-- Visual highlighting of compared elements
-- Step-by-step progression through algorithm
-- Final result (position or "not found")
+Details to Show User:
 
-**What is hidden:**
-- Underlying array indexing details
-- Mathematical floor division
-- Loop control variables
-- Memory allocation details
+Current state of the array/list after each significant operation
 
+Visual highlighting of elements being compared
+
+Animation of element swaps/movements
+
+Step counter and current algorithm phase
+
+Performance metrics (comparisons, swaps, time)
+
+Details to Hide/Abstract:
+
+Internal pointer/index management
+
+Temporary variable assignments during swaps
+
+Loop control variables and conditions
+
+Memory allocation/management details
+
+Error handling for edge cases (handled silently)
 #### 4. Algorithm Design
 
 **Input:**
-- Sorted array of integers (1-20 elements)
-- Target value to search for
-- Input validation for correct data types
+- Data Type: String input from text field (e.g., "5, 3, 8, 1, 2")
 
+- Conversion: Parse to integer list: [5, 3, 8, 1, 2]
+
+- GUI Elements: Text input field, "Sort" button, algorithm selection dropdown
 **Output:**
-- Visual representation with color-coded elements:
-  - Red: Current search boundaries (low and high)
-  - Blue: Current midpoint being examined
-  - Green: Found target element
-  - Gray: Elements outside search range
-- Search result message (found at index X or not found)
-- Step-by-step execution trace
-- Algorithm metrics (comparisons made, efficiency)
+- Visual: Animated sorted array with color-coded completion
+
+- Textual: Final sorted list displayed in result area
+
+- Metrics: Statistics panel showing:
+
+- Total comparisons made
+
+- Total swaps performed
+
+- Time elapsed
+
+- Algorithm efficiency rating
+
+
+**Choice of Data Structure**
+- Primary Structure: Python List (dynamic array)
+
+- Reasoning: Easy indexing for visualization, simple swapping operations, familiar to users
+
+- Alternative Considered: Linked List (but less intuitive for array visualization)
 
 ---
 

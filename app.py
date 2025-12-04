@@ -14,6 +14,7 @@ Course: CISC-121
 import gradio as gr
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 
 
 def binary_search(arr, target):
@@ -58,7 +59,8 @@ def binary_search(arr, target):
             'high': high,         # Current upper boundary
             'mid': mid,           # Current midpoint being checked
             'value': arr[mid],    # Value at midpoint
-            'comparison': comparisons
+            'comparison': comparisons,
+            'eliminated': low + (len(arr) - high - 1)  # Track eliminated elements
         })
         
         # Check if we found the target
@@ -77,61 +79,116 @@ def binary_search(arr, target):
     return -1, steps
 
 
-def visualize(arr, step, is_found=False):
+def visualize(arr, step, is_found=False, step_number=1, total_steps=1):
     """
-    Creates a bar chart visualization showing the current state of the search.
+    Creates a clean bar chart visualization showing the search process.
     
-    The visualization uses color coding to help understand what the algorithm is doing:
-    - Gray bars: Elements not currently being examined
-    - Red bars: Current search boundaries (low and high pointers)
-    - Blue bar: Current midpoint being compared
-    - Green bar: Target element (when found)
+    Uses a horizontal bar layout with clear color coding to show which elements
+    are being examined and which have been eliminated.
     
     Args:
         arr: The array being searched
         step: Dictionary with current low, high, mid pointers and values
         is_found: Boolean indicating whether target was found
+        step_number: Current step number
+        total_steps: Total number of steps
     
     Returns:
         Matplotlib figure object ready to display
     """
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(14, 6))
     
-    # Set up bar colors - default to gray
-    colors = ['#d3d3d3'] * len(arr)
+    n = len(arr)
+    low_idx = step['low']
+    high_idx = step['high']
+    mid_idx = step['mid']
     
-    # Color the search boundaries red
-    colors[step['low']] = '#ff4444'
-    colors[step['high']] = '#ff4444'
+    # Determine colors for each bar
+    colors = []
+    for i in range(n):
+        if i < low_idx or i > high_idx:
+            # Eliminated - gray and faded
+            colors.append('#d3d3d3')
+        elif i == mid_idx:
+            # Current midpoint - cyan for checking, green if found
+            colors.append('#00ff88' if is_found else '#00bfff')
+        elif i == low_idx or i == high_idx:
+            # Boundaries - orange
+            colors.append('#ff8c42')
+        else:
+            # Active search space - yellow
+            colors.append('#ffd93d')
     
-    # Color the midpoint blue (or green if target found)
+    # Create horizontal bars
+    y_positions = np.arange(n)
+    bars = ax.barh(y_positions, arr, color=colors, edgecolor='black', linewidth=2, height=0.7)
+    
+    # Add value labels at the end of bars
+    for i, (bar, value) in enumerate(zip(bars, arr)):
+        ax.text(bar.get_width() + max(arr) * 0.02, bar.get_y() + bar.get_height()/2,
+                f'{value}', va='center', fontsize=12, fontweight='bold')
+    
+    # Add index labels on the left
+    ax.set_yticks(y_positions)
+    ax.set_yticklabels([f'[{i}]' for i in range(n)], fontsize=11)
+    
+    # Add pointer annotations
+    pointer_offset = max(arr) * 0.15
+    
+    # Low pointer
+    if low_idx <= high_idx:
+        ax.annotate('LOW', xy=(0, low_idx), xytext=(-pointer_offset, low_idx),
+                   ha='right', va='center', fontsize=11, fontweight='bold',
+                   color='#ff8c42',
+                   bbox=dict(boxstyle='round,pad=0.3', facecolor='#ff8c42', alpha=0.3),
+                   arrowprops=dict(arrowstyle='->', color='#ff8c42', lw=2))
+    
+    # High pointer
+    if low_idx <= high_idx:
+        ax.annotate('HIGH', xy=(0, high_idx), xytext=(-pointer_offset, high_idx),
+                   ha='right', va='center', fontsize=11, fontweight='bold',
+                   color='#ff8c42',
+                   bbox=dict(boxstyle='round,pad=0.3', facecolor='#ff8c42', alpha=0.3),
+                   arrowprops=dict(arrowstyle='->', color='#ff8c42', lw=2))
+    
+    # Mid pointer
+    mid_color = '#00ff88' if is_found else '#00bfff'
+    mid_label = 'FOUND!' if is_found else 'MID'
+    ax.annotate(mid_label, xy=(arr[mid_idx], mid_idx), 
+               xytext=(arr[mid_idx] + pointer_offset * 2, mid_idx),
+               ha='left', va='center', fontsize=12, fontweight='bold',
+               color=mid_color,
+               bbox=dict(boxstyle='round,pad=0.5', facecolor=mid_color, alpha=0.3),
+               arrowprops=dict(arrowstyle='->', color=mid_color, lw=3))
+    
+    # Configure axes
+    ax.set_xlabel('Value', fontsize=13, fontweight='bold')
+    ax.set_ylabel('Index', fontsize=13, fontweight='bold')
+    
+    # Title with status
     if is_found:
-        colors[step['mid']] = '#44ff44'  # Green = success!
+        title_color = '#00aa00'
+        title_text = f'FOUND! Target at index {mid_idx} (value = {step["value"]})'
     else:
-        colors[step['mid']] = '#4444ff'  # Blue = checking this element
+        title_color = '#333333'
+        title_text = f'Step {step_number}/{total_steps}: Checking index {mid_idx} (value = {step["value"]})'
     
-    # Create the bar chart
-    ax.bar(range(len(arr)), arr, color=colors, edgecolor='black', width=0.8)
+    ax.set_title(title_text, fontsize=14, fontweight='bold', pad=20, color=title_color)
     
-    # Add value labels on top of each bar
-    for i, val in enumerate(arr):
-        ax.text(i, val + 0.3, str(val), ha='center', fontsize=11, fontweight='bold')
+    ax.grid(axis='x', alpha=0.3, linestyle='--')
+    ax.set_xlim(0, max(arr) * 1.3)
     
-    # Add pointer labels below the chart
-    ax.text(step['low'], -1.5, 'L', ha='center', fontsize=11, 
-            color='#ff4444', fontweight='bold')
-    ax.text(step['high'], -1.5, 'H', ha='center', fontsize=11, 
-            color='#ff4444', fontweight='bold')
-    ax.text(step['mid'], arr[step['mid']] + 1.2, 'M', ha='center', fontsize=11,
-            color='#44ff44' if is_found else '#4444ff', fontweight='bold')
+    # Add legend
+    legend_elements = [
+        plt.Rectangle((0,0),1,1, fc='#00bfff', ec='black', lw=2, label='Current Check (MID)'),
+        plt.Rectangle((0,0),1,1, fc='#ff8c42', ec='black', lw=2, label='Search Boundaries (LOW/HIGH)'),
+        plt.Rectangle((0,0),1,1, fc='#ffd93d', ec='black', lw=2, label='Active Search Space'),
+        plt.Rectangle((0,0),1,1, fc='#d3d3d3', ec='black', lw=2, label='Eliminated'),
+    ]
+    if is_found:
+        legend_elements[0] = plt.Rectangle((0,0),1,1, fc='#00ff88', ec='black', lw=2, label='FOUND!')
     
-    # Configure chart appearance
-    ax.set_ylim(-2, max(arr) + 2.5)
-    ax.set_xlabel('Array Index', fontsize=12)
-    ax.set_ylabel('Value', fontsize=12)
-    ax.set_title(f"Step {step['comparison']}: Checking index {step['mid']} (value = {step['value']})", 
-                 fontsize=13, fontweight='bold')
-    ax.grid(alpha=0.2, linestyle='--')
+    ax.legend(handles=legend_elements, loc='upper right', fontsize=10, framealpha=0.9)
     
     plt.tight_layout()
     return fig
@@ -190,6 +247,15 @@ def validate_input(array_str, target_str):
         return None, None, "Error: Please enter valid integers only (no letters or symbols)"
 
 
+def generate_random_array():
+    """Generate a random sorted array for demonstration."""
+    size = random.randint(6, 12)
+    start = random.randint(1, 20)
+    step = random.randint(2, 5)
+    arr = [start + i * step for i in range(size)]
+    return ', '.join(map(str, arr))
+
+
 def search(array_str, target_str):
     """
     Main search function that coordinates the entire process.
@@ -227,141 +293,206 @@ def search(array_str, target_str):
     
     # Step 3: Generate visualization of the final step
     is_found = (result != -1)
-    fig = visualize(arr, steps[-1], is_found)
+    
+    # For "not found" cases, create a special visualization
+    if not is_found:
+        fig, ax = plt.subplots(figsize=(14, 6))
+        
+        # Show the final state with clear "NOT FOUND" message
+        n = len(arr)
+        y_positions = np.arange(n)
+        colors = ['#ffcccc'] * n  # Light red for all elements
+        
+        bars = ax.barh(y_positions, arr, color=colors, edgecolor='#cc0000', linewidth=2, height=0.7)
+        
+        # Add value labels
+        for i, (bar, value) in enumerate(zip(bars, arr)):
+            ax.text(bar.get_width() + max(arr) * 0.02, bar.get_y() + bar.get_height()/2,
+                    f'{value}', va='center', fontsize=12, fontweight='bold')
+        
+        # Add index labels
+        ax.set_yticks(y_positions)
+        ax.set_yticklabels([f'[{i}]' for i in range(n)], fontsize=11)
+        
+        # Big "NOT FOUND" overlay
+        ax.text(max(arr) * 0.5, n/2, 'TARGET NOT FOUND', 
+               ha='center', va='center', fontsize=32, fontweight='bold',
+               color='#cc0000', alpha=0.7,
+               bbox=dict(boxstyle='round,pad=1', facecolor='white', 
+                        edgecolor='#cc0000', linewidth=4, alpha=0.9))
+        
+        ax.set_xlabel('Value', fontsize=13, fontweight='bold')
+        ax.set_ylabel('Index', fontsize=13, fontweight='bold')
+        ax.set_title(f'Search Complete: Target {target} not found after {len(steps)} comparisons', 
+                    fontsize=14, fontweight='bold', pad=20, color='#cc0000')
+        ax.grid(axis='x', alpha=0.3, linestyle='--')
+        ax.set_xlim(0, max(arr) * 1.3)
+        
+        plt.tight_layout()
+    else:
+        fig = visualize(arr, steps[-1], is_found, len(steps), len(steps))
     
     # Step 4: Format result message
-    if result != -1:
-        result_msg = f"Success! Target {target} found at index {result}"
-        result_msg += f"\n\nThe algorithm made {len(steps)} comparison(s) to find the target."
-    else:
-        result_msg = f"Target {target} was not found in the array"
-        result_msg += f"\n\nThe algorithm made {len(steps)} comparison(s) before determining the target is not present."
+    result_msg = "## Search Complete\n\n"
     
-    # Add efficiency comparison
+    if result != -1:
+        result_msg += f"**Status:** Target found\n\n"
+        result_msg += f"**Location:** Index {result} (value = {arr[result]})\n\n"
+        result_msg += f"**Efficiency:** Found in {len(steps)} comparison(s)\n\n"
+    else:
+        result_msg += f"**Status:** Target not found\n\n"
+        result_msg += f"**Comparisons:** {len(steps)} check(s) performed\n\n"
+        result_msg += f"**Conclusion:** {target} is not present in this array\n\n"
+    
+    # Add efficiency metrics
     max_comparisons = int(np.log2(len(arr))) + 1 if len(arr) > 0 else 0
-    result_msg += f"\n\nFor an array of size {len(arr)}:"
-    result_msg += f"\n- Binary Search: {len(steps)} comparisons (O(log n))"
-    result_msg += f"\n- Linear Search would need: up to {len(arr)} comparisons (O(n))"
-    result_msg += f"\n- Efficiency gain: {((len(arr) - len(steps)) / len(arr) * 100):.1f}% fewer comparisons"
+    efficiency = ((len(arr) - len(steps)) / len(arr) * 100) if len(arr) > 0 else 0
+    
+    result_msg += "### Algorithm Performance\n\n"
+    result_msg += f"- Array size: {len(arr)} elements\n"
+    result_msg += f"- Comparisons made: {len(steps)}\n"
+    result_msg += f"- Maximum possible: {max_comparisons}\n"
+    result_msg += f"- Efficiency gain: {efficiency:.1f}% fewer checks than linear search\n"
     
     # Step 5: Format detailed step-by-step execution
-    steps_text = "### How the Algorithm Works:\n\n"
-    steps_text += "Each step shows the current search boundaries and which element is being checked.\n\n"
+    steps_text = "## Step-by-Step Execution\n\n"
     
     for i, step in enumerate(steps, 1):
-        steps_text += f"**Step {i}:**\n"
-        steps_text += f"- Search range: index {step['low']} to {step['high']}\n"
-        steps_text += f"- Midpoint: index {step['mid']}\n"
-        steps_text += f"- Value at midpoint: {step['value']}\n"
+        steps_text += f"### Step {i}\n\n"
+        steps_text += f"**Search Range:** indices {step['low']} to {step['high']} "
+        steps_text += f"({step['high'] - step['low'] + 1} elements)\n\n"
+        steps_text += f"**Midpoint:** index {step['mid']}\n\n"
+        steps_text += f"**Value checked:** {step['value']}\n\n"
         
         # Explain what happens next
         if i == len(steps) and is_found:
-            steps_text += f"- Result: {step['value']} equals {target} - Found it!\n"
+            steps_text += f"**Result:** {step['value']} = {target} → **Target found!**\n\n"
         elif i < len(steps):
             next_step = steps[i]
             if step['value'] < target:
-                steps_text += f"- Decision: {step['value']} < {target}, so search the right half\n"
-                steps_text += f"- Next search range: index {next_step['low']} to {next_step['high']}\n"
+                steps_text += f"**Decision:** {step['value']} < {target}\n\n"
+                steps_text += f"→ Search RIGHT half (indices {next_step['low']} to {next_step['high']})\n\n"
             else:
-                steps_text += f"- Decision: {step['value']} > {target}, so search the left half\n"
-                steps_text += f"- Next search range: index {next_step['low']} to {next_step['high']}\n"
+                steps_text += f"**Decision:** {step['value']} > {target}\n\n"
+                steps_text += f"→ Search LEFT half (indices {next_step['low']} to {next_step['high']})\n\n"
         elif not is_found:
-            steps_text += f"- Decision: Search space exhausted - target not in array\n"
+            steps_text += f"**Decision:** Search space exhausted → **Target not found**\n\n"
         
-        steps_text += "\n"
+        steps_text += "---\n\n"
     
     return fig, result_msg, steps_text
 
 
-# Create the Gradio interface
-with gr.Blocks(title="Binary Search Visualizer", theme=gr.themes.Soft()) as app:
+# Create the Gradio interface with custom CSS
+css = """
+.gradio-container {
+    font-family: 'Inter', sans-serif;
+}
+.header {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.info-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    margin: 1rem 0;
+}
+"""
+
+with gr.Blocks(css=css, theme=gr.themes.Soft(), title="Binary Search Visualizer") as app:
     
-    # Header section
-    gr.Markdown("""
-    # Binary Search Algorithm Visualizer
-    
-    **Learn how binary search efficiently finds elements in sorted arrays**
-    
-    Binary search is one of the fastest searching algorithms, reducing search time from O(n) to O(log n).
-    This means searching 1,000,000 elements takes only ~20 comparisons instead of up to 1,000,000!
+    # Custom header
+    gr.HTML("""
+    <div class="header">
+        <h1 style="margin:0; font-size: 2.5rem;">Binary Search Visualizer</h1>
+        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem; opacity: 0.9;">
+            Watch how binary search finds elements with logarithmic efficiency
+        </p>
+    </div>
     """)
     
-    # Instructions section
-    gr.Markdown("""
-    ### How to Use This Tool:
-    
-    1. **Enter a sorted array** of numbers separated by commas (e.g., `1, 3, 5, 7, 9, 11, 13`)
-    2. **Enter the target value** you want to search for (e.g., `7`)
-    3. Click **"Run Binary Search"** to see the algorithm in action
-    4. Watch how the algorithm narrows down the search space step by step
-    
-    **Important:** The array must be sorted in ascending order for binary search to work correctly!
+    # Instructions in colored box
+    gr.HTML("""
+    <div class="info-box">
+        <h3 style="margin-top:0;">How to Use</h3>
+        <ol style="margin-bottom:0;">
+            <li>Enter a <strong>sorted array</strong> of numbers (comma-separated)</li>
+            <li>Enter the <strong>target value</strong> you want to find</li>
+            <li>Click <strong>"Search"</strong> or try <strong>"Random Example"</strong></li>
+            <li>Watch the unique circular visualization show the algorithm in action!</li>
+        </ol>
+    </div>
     """)
     
-    # Input section
+    # Input section with two columns
     with gr.Row():
-        array_input = gr.Textbox(
-            label="Sorted Array (comma-separated integers)",
-            placeholder="Enter sorted numbers like: 1, 3, 5, 7, 9, 11, 13",
-            value="1, 3, 5, 7, 9, 11, 13",
-            info="Enter up to 20 numbers in ascending order"
-        )
-        target_input = gr.Textbox(
-            label="Target Value",
-            placeholder="Enter the number to search for",
-            value="7",
-            info="This is the value the algorithm will try to find"
-        )
+        with gr.Column(scale=3):
+            array_input = gr.Textbox(
+                label="Sorted Array",
+                placeholder="Example: 2, 5, 8, 12, 16, 23, 38, 45, 56, 67",
+                value="2, 5, 8, 12, 16, 23, 38, 45, 56, 67",
+                info="Enter numbers in ascending order, separated by commas"
+            )
+        with gr.Column(scale=1):
+            target_input = gr.Textbox(
+                label="Target Value",
+                placeholder="23",
+                value="23",
+                info="Number to search for"
+            )
     
-    # Search button
-    search_btn = gr.Button("Run Binary Search", variant="primary", size="lg")
+    # Buttons
+    with gr.Row():
+        random_btn = gr.Button("Generate Random Example", variant="secondary", size="lg")
+        search_btn = gr.Button("Search", variant="primary", size="lg")
     
     # Output section
-    gr.Markdown("### Results:")
-    
-    plot_output = gr.Plot(label="Visual Representation")
+    plot_output = gr.Plot(label="Algorithm Visualization")
     
     with gr.Row():
-        with gr.Column():
-            result_output = gr.Markdown(label="Search Summary")
-        with gr.Column():
-            gr.Markdown("""
-            **Legend:**
-            - **L** = Low pointer (red) - start of search range
-            - **H** = High pointer (red) - end of search range  
-            - **M** = Midpoint (blue) - currently checking this element
-            - **Green** = Target found!
-            - **Gray** = Not currently being examined
-            """)
-    
-    steps_output = gr.Markdown(label="Step-by-Step Breakdown")
+        result_output = gr.Markdown(label="Results")
+        steps_output = gr.Markdown(label="Execution Details")
     
     # Educational footer
-    gr.Markdown("""
-    ---
-    
-    ### Why Binary Search is Powerful:
-    
-    Binary search eliminates half of the remaining elements with each comparison. This makes it extremely efficient:
-    - Array of 10 elements: max 4 comparisons
-    - Array of 100 elements: max 7 comparisons  
-    - Array of 1,000 elements: max 10 comparisons
-    - Array of 1,000,000 elements: max 20 comparisons
-    
-    **Time Complexity:** O(log n) - logarithmic growth  
-    **Space Complexity:** O(1) - constant extra space  
-    **Requirement:** Array must be sorted
-    
-    ---
-    
-    *Created for CISC-121 | Queen's University | Joshua M. Ranin (20457769)*
+    gr.HTML("""
+    <div class="info-box" style="margin-top: 2rem;">
+        <h3>Why Binary Search is Powerful</h3>
+        <p>
+            Binary search eliminates <strong>half</strong> of the remaining elements with each step.
+            This exponential reduction means:
+        </p>
+        <ul>
+            <li>10 elements → max 4 comparisons</li>
+            <li>100 elements → max 7 comparisons</li>
+            <li>1,000,000 elements → max 20 comparisons!</li>
+        </ul>
+        <p style="margin-bottom:0;">
+            <strong>Time Complexity:</strong> O(log n) | 
+            <strong>Space Complexity:</strong> O(1) | 
+            <strong>Requirement:</strong> Sorted array
+        </p>
+    </div>
     """)
     
-    # Connect button to search function
+    gr.Markdown("*CISC-121 Final Project | Joshua M. Ranin (20457769) | Queen's University*")
+    
+    # Connect buttons
     search_btn.click(
         fn=search,
         inputs=[array_input, target_input],
         outputs=[plot_output, result_output, steps_output]
+    )
+    
+    random_btn.click(
+        fn=generate_random_array,
+        inputs=[],
+        outputs=[array_input]
     )
 
 

@@ -75,20 +75,20 @@ Breaking Binary Search into smaller steps:
 
 ```mermaid
 flowchart TD
-    Start([Start]) --> Input[/Input: Sorted Array & Target/]
+    Start([Start]) --> Input[/Input: Sorted Array and Target/]
     
     Input --> Validate{Valid Input?}
     Validate -->|No| Error[/Display Error/]
     Error --> End([End])
     
     Validate -->|Yes| Init[Initialize: low=0, high=n-1]
-    Init --> Loop{low <= high?}
+    Init --> Loop{low less than or equal to high?}
     
     Loop -->|No| NotFound[/Display: Not Found/]
     NotFound --> End
     
-    Loop -->|Yes| CalcMid[Calculate: mid = low + high // 2]
-    CalcMid --> Compare{arr[mid] vs target}
+    Loop -->|Yes| CalcMid[Calculate: mid = low plus high divided by 2]
+    CalcMid --> Compare{Compare arr mid with target}
     
     Compare -->|Equal| Found[/Display: Found at mid/]
     Found --> End

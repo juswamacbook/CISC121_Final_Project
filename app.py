@@ -7,7 +7,7 @@ sorted array by repeatedly dividing the search space in half.
 
 Author: Joshua M. Ranin
 Student ID: 20457769
-Date: December 2024
+Date: December 2025
 Course: CISC-121
 """
 
@@ -316,9 +316,9 @@ def search(array_str, target_str):
         
         # Big "NOT FOUND" overlay
         ax.text(max(arr) * 0.5, n/2, 'TARGET NOT FOUND', 
-               ha='center', va='center', fontsize=32, fontweight='bold',
-               color='#cc0000', alpha=0.7,
-               bbox=dict(boxstyle='round,pad=1', facecolor='white', 
+            ha='center', va='center', fontsize=32, fontweight='bold',
+            color='#cc0000', alpha=0.7,
+            bbox=dict(boxstyle='round,pad=1', facecolor='white', 
                         edgecolor='#cc0000', linewidth=4, alpha=0.9))
         
         ax.set_xlabel('Value', fontsize=13, fontweight='bold')

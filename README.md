@@ -328,6 +328,7 @@ CISC121_Final_Project/
 2. [Gradio Documentation](https://www.gradio.app/docs/)
 3. [Hugging Face Spaces Guide](https://huggingface.co/docs/hub/spaces)
 4. CISC-121 Course Materials
+5. [AI Chat](https://chat.deepseek.com/share/zv8ifonsihvjo7j62q)
 
 ---
 

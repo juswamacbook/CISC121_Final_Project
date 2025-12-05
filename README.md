@@ -281,13 +281,13 @@ def binary_search(arr, target):
 ## Deployment
 
 ### Hugging Face Spaces
-Live Application: [Your Hugging Face Space Link]
+Live Application: [https://huggingface.co/spaces/03nineteenjo/CISC121FinalProject]
 
 ### To Deploy:
 1. Create a Hugging Face account at https://huggingface.co
 2. Create a new Space and select "Gradio" as SDK
 3. Upload `app.py` and `requirements.txt`
-4. Your app will be live at: `https://huggingface.co/spaces/03nineteenjo/`
+4. Your app will be live at: `https://huggingface.co/spaces/03nineteenjo/CISC121FinalProject`
 
 ---
 
@@ -328,6 +328,7 @@ CISC121_Final_Project/
 2. [Gradio Documentation](https://www.gradio.app/docs/)
 3. [Hugging Face Spaces Guide](https://huggingface.co/docs/hub/spaces)
 4. CISC-121 Course Materials
+5. [AI Chat](https://chat.deepseek.com/share/zv8ifonsihvjo7j62q)
 
 ---
 

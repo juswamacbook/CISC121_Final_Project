@@ -1,10 +1,8 @@
 """
 Binary Search Algorithm Visualizer
-
 This program implements the binary search algorithm with interactive visualization
 using Gradio. It demonstrates how binary search efficiently finds elements in a
 sorted array by repeatedly dividing the search space in half.
-
 Author: Joshua M. Ranin
 Student ID: 20457769
 Date: December 2025
@@ -383,30 +381,29 @@ def search(array_str, target_str):
     return fig, result_msg, steps_text
 
 
-# Create the Gradio interface with custom CSS
-css = """
-.gradio-container {
-    font-family: 'Inter', sans-serif;
-}
-.header {
-    text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-}
-.info-box {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
-    margin: 1rem 0;
-}
-"""
 
-with gr.Blocks(css=css, theme=gr.themes.Soft(), title="Binary Search Visualizer") as app:
-    
+with gr.Blocks(title="Binary Search Visualizer") as app:
+    # Create the Gradio interface with custom CSS
+    css = """
+    .gradio-container {
+        font-family: 'Inter', sans-serif;
+    }
+    .header {
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+    .info-box {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+        margin: 1rem 0;
+    }
+    """
     # Custom header
     gr.HTML("""
     <div class="header">
